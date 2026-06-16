@@ -150,24 +150,24 @@ body {
   display: flex;
   flex-direction: column;
   border: 8px solid #2d3748;
-  transition: width 0.1s ease;
 }
 
+/* FIXED: Repositioned and stylized handle layout */
 .resize-handle {
-  width: 6px;
+  width: 14px;
   height: 100px;
-  background: #444;
+  background: #333;
   position: absolute;
-  right: 20px;
+  right: 15px;
   top: 50%;
   transform: translateY(-50%);
-  border-radius: 3px;
+  border-radius: 8px;
   cursor: ew-resize;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border: 2px solid #555;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  z-index: 99;
 }
-.resize-handle:hover { background: #666; }
+.resize-handle:hover { background: #444; border-color: var(--green-accent); }
 
 /* ═══════════════════════ SCREEN LAYOUTS ═════════════════════ */
 .screen {
@@ -443,7 +443,7 @@ body {
   border: 2px solid #fff;
   box-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
-.map-grid-legend {
+.map-legend {
   position: absolute;
   bottom: 8px;
   left: 8px;
