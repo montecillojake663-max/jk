@@ -1,608 +1,631 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EcoWatch — Community Pollution Reporter</title>
-
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoWatch — Community Pollution Reporter</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="app" class="app-container">
-  <!-- DESKTOP SIDEBAR (hidden on mobile) -->
-  <aside class="desktop-sidebar" id="desktopSidebar">
-    <div class="sidebar-logo">🌿 EcoWatch<span>Community Pollution Reporter</span></div>
-    <div class="sidebar-user">
-      <div class="sidebar-avatar">👤</div>
-      <div><div class="sidebar-uname">Jake Montecillo</div><div class="sidebar-uloc">📍 Cogon, Bogo City Cebu</div></div>
-    </div>
-    <nav class="sidebar-nav">
-      <button class="sidebar-nav-item active" onclick="showScreen('home',this)">
-        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home
-      </button>
-      <button class="sidebar-nav-item" onclick="showScreen('reports',this)">
-        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>My Reports
-      </button>
-      <button class="sidebar-nav-item" onclick="showScreen('report-form',this)">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>New Report
-      </button>
-      <button class="sidebar-nav-item" onclick="showScreen('notifications',this)">
-        <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg>Notifications
-      </button>
-      <button class="sidebar-nav-item" onclick="showScreen('profile',this)">
-        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profile
-      </button>
-    </nav>
-    <div class="sidebar-footer">EcoWatch v1.0 · Bogo City, Cebu</div>
-  </aside>
-
-  <!-- Interactive Wrapper System containing Phone Layout and Resize Node Handles -->
-  <div class="resizable-wrapper" id="resizableWrapper">
-    <div class="phone-shell" id="mainPane">
-      <!-- ═══════════════════════════════ LOGIN ═══════════════ -->
-      <div class="screen active" id="screen-login">
-        <div class="auth-hero">
-          <div class="auth-avatar"><span class="auth-avatar-placeholder">🌿</span></div>
-        </div>
-        <div class="auth-body auth-body-plaid">
-          <div class="form-field">
-            <div class="input-wrap">
-              <input type="email" placeholder="Email" id="login-email">
-              <button class="eye-btn" style="font-size:13px">✉</button>
-            </div>
-          </div>
-          <div class="form-field">
-            <div class="input-wrap">
-              <input type="password" placeholder="Password" id="login-pw">
-              <button class="eye-btn" onclick="togglePw('login-pw',this)">👁</button>
-            </div>
-          </div>
-          <div class="forget-link">Forgot Password?</div>
-          <button class="btn-primary" onclick="doLogin()">Sign In</button>
-          <button class="btn-outline" onclick="showScreen('signup')">Sign Up</button>
-          <div class="auth-divider">or</div>
-          <div class="social-row">
-            <button class="social-btn"><span style="font-size:18px">G</span><span style="color:#4285F4;font-weight:700">o</span><span style="color:#EA4335;font-weight:700">o</span><span style="color:#FBBC05;font-weight:700">g</span><span style="color:#34A853;font-weight:700">l</span><span style="color:#4285F4;font-weight:700">e</span></button>
-            <button class="social-btn">🔵 Facebook</button>
-          </div>
+  <div id="app" class="app-container">
+    <aside class="desktop-sidebar" id="desktopSidebar">
+      <div class="sidebar-logo">🌿 EcoWatch<span>Community Pollution Reporter</span></div>
+      <div class="sidebar-user">
+        <div class="sidebar-avatar">👤</div>
+        <div>
+          <div class="sidebar-uname">Jake Montecillo</div>
+          <div class="sidebar-uloc">📍 Cogon, Bogo City Cebu</div>
         </div>
       </div>
+      <nav class="sidebar-nav">
+        <button class="sidebar-nav-item active" onclick="showScreen('home',this)">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home
+        </button>
+        <button class="sidebar-nav-item" onclick="showScreen('reports',this)">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>My Reports
+        </button>
+        <button class="sidebar-nav-item" onclick="showScreen('report-form',this)">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>New Report
+        </button>
+        <button class="sidebar-nav-item" onclick="showScreen('notifications',this)">
+          <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg>Notifications
+        </button>
+        <button class="sidebar-nav-item" onclick="showScreen('profile',this)">
+          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profile
+        </button>
+      </nav>
+      <div class="sidebar-footer">EcoWatch v1.0 · Bogo City, Cebu</div>
+    </aside>
 
-      <!-- ═══════════════════════════════ SIGN UP ════════════ -->
-      <div class="screen" id="screen-signup">
-        <div class="auth-hero" style="position:relative">
-          <button class="back-btn" style="position:absolute;left:16px;top:16px" onclick="showScreen('login')">←</button>
-          <div style="text-align:center">
-            <div class="auth-avatar" style="margin:0 auto 8px"><span class="auth-avatar-placeholder">👤</span></div>
-            <div style="color:#fff;font-size:17px;font-weight:700">Sign Up</div>
+    <div class="resizable-wrapper" id="resizableWrapper">
+      <div class="phone-shell" id="mainPane">
+        
+        <div class="screen active" id="screen-login">
+          <div class="auth-hero">
+            <div class="auth-avatar"><span class="auth-avatar-placeholder">🌿</span></div>
+          </div>
+          <div class="auth-body auth-body-plaid">
+            <div class="form-field">
+              <div class="input-wrap">
+                <input type="email" placeholder="Email" id="login-email">
+                <button class="eye-btn" style="font-size:13px">✉</button>
+              </div>
+            </div>
+            <div class="form-field">
+              <div class="input-wrap">
+                <input type="password" placeholder="Password" id="login-pw">
+                <button class="eye-btn" onclick="togglePw('login-pw',this)">👁</button>
+              </div>
+            </div>
+            <div class="forget-link">Forgot Password?</div>
+            <button class="btn-primary" onclick="doLogin()">Sign In</button>
+            <button class="btn-outline" onclick="showScreen('signup')">Sign Up</button>
+            <div class="auth-divider">or</div>
+            <div class="social-row">
+              <button class="social-btn"><span style="font-size:18px">G</span><span style="color:#4285F4;font-weight:700">o</span><span style="color:#EA4335;font-weight:700">o</span><span style="color:#FBBC05;font-weight:700">g</span><span style="color:#34A853;font-weight:700">l</span><span style="color:#4285F4;font-weight:700">e</span></button>
+              <button class="social-btn">🔵 Facebook</button>
+            </div>
           </div>
         </div>
-        <div class="auth-body auth-body-plaid" style="overflow-y:auto">
-          <div class="form-row">
-            <div class="form-field">
-              <div class="input-wrap"><input type="text" placeholder="First Name"></div>
-            </div>
-            <div class="form-field">
-              <div class="input-wrap"><input type="text" placeholder="Last Name"></div>
-            </div>
-          </div>
-          <div class="form-field">
-            <div class="input-wrap"><input type="text" placeholder="Email or Phone Number"></div>
-          </div>
-          <div class="form-field">
-            <div class="input-wrap">
-              <input type="password" placeholder="Password" id="su-pw">
-              <button class="eye-btn" onclick="togglePw('su-pw',this)">👁</button>
-            </div>
-          </div>
-          <div class="form-field">
-            <div class="input-wrap">
-              <input type="password" placeholder="Confirm Password" id="su-cpw">
-              <button class="eye-btn" onclick="togglePw('su-cpw',this)">👁</button>
-            </div>
-          </div>
-          <button class="btn-primary" style="margin-top:8px" onclick="showScreen('home')">Continue</button>
-        </div>
-      </div>
 
-      <!-- ═══════════════════════════════ HOME ═══════════════ -->
-      <div class="screen" id="screen-home">
-        <div class="top-header">
-          <div>
-            <div style="font-size:12px;opacity:.7">Good morning,</div>
-            <div style="font-size:16px;font-weight:700">Jake</div>
+        <div class="screen" id="screen-signup">
+          <div class="auth-hero" style="position:relative">
+            <button class="back-btn" style="position:absolute;left:16px;top:16px" onclick="showScreen('login')">←</button>
+            <div style="text-align:center">
+              <div class="auth-avatar" style="margin:0 auto 8px"><span class="auth-avatar-placeholder">👤</span></div>
+              <div style="color:#fff;font-size:17px;font-weight:700">Sign Up</div>
+            </div>
           </div>
-          <div class="hdr-icons">
-            <button class="icon-btn" onclick="showScreen('notifications')">
-              🔔<span class="notif-dot"></span>
+          <div class="auth-body auth-body-plaid" style="overflow-y:auto">
+            <div class="form-row">
+              <div class="form-field">
+                <div class="input-wrap"><input type="text" placeholder="First Name"></div>
+              </div>
+              <div class="form-field">
+                <div class="input-wrap"><input type="text" placeholder="Last Name"></div>
+              </div>
+            </div>
+            <div class="form-field">
+              <div class="input-wrap"><input type="text" placeholder="Email or Phone Number"></div>
+            </div>
+            <div class="form-field">
+              <div class="input-wrap">
+                <input type="password" placeholder="Password" id="su-pw">
+                <button class="eye-btn" onclick="togglePw('su-pw',this)">👁</button>
+              </div>
+            </div>
+            <div class="form-field">
+              <div class="input-wrap">
+                <input type="password" placeholder="Confirm Password" id="su-cpw">
+                <button class="eye-btn" onclick="togglePw('su-cpw',this)">👁</button>
+              </div>
+            </div>
+            <button class="btn-primary" style="margin-top:8px" onclick="showScreen('home')">Continue</button>
+          </div>
+        </div>
+
+        <div class="screen" id="screen-home">
+          <div class="top-header">
+            <div>
+              <div style="font-size:12px;opacity:.7">Good morning,</div>
+              <div style="font-size:16px;font-weight:700">Jake</div>
+            </div>
+            <div class="hdr-icons">
+              <button class="icon-btn" onclick="showScreen('notifications')">
+                🔔<span class="notif-dot"></span>
+              </button>
+              <button class="icon-btn" onclick="showScreen('profile')">👤</button>
+            </div>
+          </div>
+          <div class="screen-body">
+            <div style="background:var(--green-dark);padding:0 20px 16px">
+              <div style="background:rgba(255,255,255,.15);border-radius:20px;padding:8px 16px;display:flex;align-items:center;gap:8px;color:#fff;font-size:13px">
+                📍 Bgry. Sagong Siang, Caloocan
+              </div>
+            </div>
+            <div style="margin:0 20px;background:#c8e6c9;border-radius:var(--radius);height:180px;position:relative;overflow:hidden">
+              <div class="map-grid"></div>
+              <div class="map-road-h"></div>
+              <div class="map-road-v"></div>
+              <div class="map-pin" style="background:#ef4444;top:38%;left:30%"></div>
+              <div class="map-pin" style="background:#f97316;top:55%;left:56%"></div>
+              <div class="map-pin" style="background:#15803d;top:28%;left:68%"></div>
+              <div class="map-pin" style="background:#92400e;top:62%;left:42%"></div>
+              <div class="map-legend">
+                <span><span class="legend-dot" style="background:#ef4444"></span>Pending</span>
+                <span><span class="legend-dot" style="background:#f97316"></span>Reviewing</span>
+                <span><span class="legend-dot" style="background:#15803d"></span>Resolved</span>
+              </div>
+              <button class="map-expand">⊕</button>
+            </div>
+            <div class="home-stats">
+              <div class="stat-card"><div class="stat-num pending">1</div><div class="stat-label">Pending</div></div>
+              <div class="stat-card"><div class="stat-num reviewing">2</div><div class="stat-label">Reviewing</div></div>
+              <div class="stat-card"><div class="stat-num resolved">1</div><div class="stat-label">Resolved</div></div>
+            </div>
+            <div class="section-title">Recent Report</div>
+            <div class="report-card" onclick="showScreen('reports')">
+              <div class="report-icon" style="background:var(--orange-light)">💧</div>
+              <div class="report-info">
+                <div class="report-type">Water Pollution</div>
+                <div class="report-desc">Description ▾</div>
+                <div class="report-loc">📍 Blk 2, Bgry. Bagong Silang, Caloocan</div>
+                <div class="report-impact">Impact Level: Medium</div>
+              </div>
+              <div class="report-meta"><span class="badge progress">Progress</span><span class="time-ago">2h ago</span></div>
+            </div>
+            <div class="report-card" onclick="showScreen('reports')">
+              <div class="report-icon" style="background:var(--orange-light)">💧</div>
+              <div class="report-info">
+                <div class="report-type">Water Pollution</div>
+                <div class="report-desc">Description ▾</div>
+                <div class="report-loc">📍 Blk 2, Bgry. Bagong Silang, Caloocan</div>
+                <div class="report-impact">Impact Level: Low</div>
+              </div>
+              <div class="report-meta"><span class="badge progress">Progress</span><span class="time-ago">2h ago</span></div>
+            </div>
+            <div class="report-card" onclick="showScreen('reports')">
+              <div class="report-icon" style="background:var(--green-light)">🌴</div>
+              <div class="report-info">
+                <div class="report-type">Land Pollution</div>
+                <div class="report-desc">Description ▾</div>
+                <div class="report-loc">📍 Blk 2, Bgry. Bagong Silang, Caloocan</div>
+                <div class="report-impact">Impact Level: Low</div>
+              </div>
+              <div class="report-meta"><span class="badge resolved">Resolved</span><span class="time-ago">2h ago</span></div>
+            </div>
+            <div class="report-card" onclick="showScreen('reports')">
+              <div class="report-icon" style="background:var(--orange-light)">🌴</div>
+              <div class="report-info">
+                <div class="report-type">Land Pollution</div>
+                <div class="report-desc">Description ▾</div>
+                <div class="report-loc">📍 Blk 2, Bgry. Bagong Silang, Caloocan</div>
+                <div class="report-impact">Impact Level: Medium</div>
+              </div>
+              <div class="report-meta"><span class="badge progress">Progress</span><span class="time-ago">2h ago</span></div>
+            </div>
+            <div style="height:16px"></div>
+          </div>
+          <nav class="bottom-nav">
+            <button class="nav-item active" onclick="showScreen('home',this,'nav')">
+              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home
             </button>
-            <button class="icon-btn" onclick="showScreen('profile')">👤</button>
-          </div>
+            <button class="nav-item" onclick="showScreen('reports',this,'nav')">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Reports
+            </button>
+            <button class="nav-fab" onclick="showScreen('report-form')">+</button>
+            <button class="nav-item" onclick="showScreen('notifications',this,'nav')">
+              <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg>Notification
+            </button>
+            <button class="nav-item" onclick="showScreen('profile',this,'nav')">
+              <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profile
+            </button>
+          </nav>
         </div>
-        <div class="screen-body">
-          <div style="background:var(--green-dark);padding:0 20px 16px">
-            <div style="background:rgba(255,255,255,.15);border-radius:20px;padding:8px 16px;display:flex;align-items:center;gap:8px;color:#fff;font-size:13px">
-              📍 Bgry. Sagong Siang, Caloocan
-            </div>
-          </div>
-          <div style="margin:0 20px;background:#c8e6c9;border-radius:var(--radius);height:180px;position:relative;overflow:hidden">
-            <div class="map-grid"></div>
-            <div class="map-road-h"></div>
-            <div class="map-road-v"></div>
-            <div class="map-pin" style="background:#ef4444;top:38%;left:30%"></div>
-            <div class="map-pin" style="background:#f97316;top:55%;left:56%"></div>
-            <div class="map-pin" style="background:#15803d;top:28%;left:68%"></div>
-            <div class="map-pin" style="background:#92400e;top:62%;left:42%"></div>
-            <div class="map-legend">
-              <span><span class="legend-dot" style="background:#ef4444"></span>Pending</span>
-              <span><span class="legend-dot" style="background:#f97316"></span>Reviewing</span>
-              <span><span class="legend-dot" style="background:#15803d"></span>Resolved</span>
-            </div>
-            <button class="map-expand">⊕</button>
-          </div>
-          <div class="home-stats">
-            <div class="stat-card"><div class="stat-num pending">1</div><div class="stat-label">Pending</div></div>
-            <div class="stat-card"><div class="stat-num reviewing">2</div><div class="stat-label">Reviewing</div></div>
-            <div class="stat-card"><div class="stat-num resolved">1</div><div class="stat-label">Resolved</div></div>
-          </div>
-          <div class="section-title">Recent Report</div>
-          <div class="report-card" onclick="showScreen('reports')">
-            <div class="report-icon" style="background:var(--orange-light)">💧</div>
-            <div class="report-info">
-              <div class="report-type">Water Pollution</div>
-              <div class="report-desc">Description ▾</div>
-              <div class="report-loc">📍 Blk 2, Bgry. Bagong Silang, Caloocan</div>
-              <div class="report-impact">Impact Level: Medium</div>
-            </div>
-            <div class="report-meta"><span class="badge progress">Progress</span><span class="time-ago">2h ago</span></div>
-          </div>
-          <div class="report-card" onclick="showScreen('reports')">
-            <div class="report-icon" style="background:var(--orange-light)">💧</div>
-            <div class="report-info">
-              <div class="report-type">Water Pollution</div>
-              <div class="report-desc">Description ▾</div>
-              <div class="report-loc">📍 Blk 2, Bgry. Bagong Silang, Caloocan</div>
-              <div class="report-impact">Impact Level: Low</div>
-            </div>
-            <div class="report-meta"><span class="badge progress">Progress</span><span class="time-ago">2h ago</span></div>
-          </div>
-          <div class="report-card" onclick="showScreen('reports')">
-            <div class="report-icon" style="background:var(--green-light)">🌴</div>
-            <div class="report-info">
-              <div class="report-type">Land Pollution</div>
-              <div class="report-desc">Description ▾</div>
-              <div class="report-loc">📍 Blk 2, Bgry. Bagong Silang, Caloocan</div>
-              <div class="report-impact">Impact Level: Low</div>
-            </div>
-            <div class="report-meta"><span class="badge resolved">Resolved</span><span class="time-ago">2h ago</span></div>
-          </div>
-          <div class="report-card" onclick="showScreen('reports')">
-            <div class="report-icon" style="background:var(--orange-light)">🌴</div>
-            <div class="report-info">
-              <div class="report-type">Land Pollution</div>
-              <div class="report-desc">Description ▾</div>
-              <div class="report-loc">📍 Blk 2, Bgry. Bagong Silang, Caloocan</div>
-              <div class="report-impact">Impact Level: Medium</div>
-            </div>
-            <div class="report-meta"><span class="badge progress">Progress</span><span class="time-ago">2h ago</span></div>
-          </div>
-          <div style="height:16px"></div>
-        </div>
-        <nav class="bottom-nav">
-          <button class="nav-item active" onclick="showScreen('home',this,'nav')">
-            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home
-          </button>
-          <button class="nav-item" onclick="showScreen('reports',this,'nav')">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Reports
-          </button>
-          <button class="nav-fab" onclick="showScreen('report-form')">+</button>
-          <button class="nav-item" onclick="showScreen('notifications',this,'nav')">
-            <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg>Notification
-          </button>
-          <button class="nav-item" onclick="showScreen('profile',this,'nav')">
-            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profile
-          </button>
-        </nav>
-      </div>
 
-      <!-- ═══════════════════════════════ REPORTS ════════════ -->
-      <div class="screen" id="screen-reports">
-        <div class="reports-hero">
-          <h1>My Reports</h1>
-          <div class="search-bar">
-            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            <input type="text" placeholder="Search reports...">
+        <div class="screen" id="screen-reports">
+          <div class="reports-hero">
+            <h1>My Reports</h1>
+            <div class="search-bar">
+              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input type="text" placeholder="Search reports...">
+            </div>
           </div>
+          <div class="reports-body">
+            <div class="stats-month">This Month</div>
+            <div class="stats-grid">
+              <div class="stats-mini"><div class="n">8</div><div class="lbl">Total</div></div>
+              <div class="stats-mini"><div class="n">3</div><div class="lbl">Pending</div></div>
+              <div class="stats-mini"><div class="n">3</div><div class="lbl">Resolved</div></div>
+              <div class="stats-mini"><div class="n prog">1</div><div class="lbl">Progress</div></div>
+            </div>
+            <div class="recent-header">
+              <span>Recent Submissions</span>
+              <button>Sort by</button>
+            </div>
+            <div class="reports-list">
+              <div class="rpt-card">
+                <div class="rpt-icon" style="background:var(--orange-light)">💧</div>
+                <div class="rpt-info">
+                  <div class="rpt-type">Water Pollution</div>
+                  <div class="rpt-desc-row">Description ▾</div>
+                  <div class="rpt-loc">📍 Blk 2, Bgry. Sagong Siang, Caloocan</div>
+                  <div class="rpt-impact">Impact Level: Medium</div>
+                </div>
+                <div class="rpt-meta"><span class="badge pending">Pending</span><span class="time-ago">6h ago</span></div>
+              </div>
+              <div class="rpt-card">
+                <div class="rpt-icon" style="background:#dbeafe">🌴</div>
+                <div class="rpt-info">
+                  <div class="rpt-type">Land Pollution</div>
+                  <div class="rpt-desc-row">Description ▾</div>
+                  <div class="rpt-loc">📍 Blk 2, Bgry. Sagong Siang, Caloocan</div>
+                  <div class="rpt-impact">Impact Level: Medium</div>
+                </div>
+                <div class="rpt-meta"><span class="badge progress">Progress</span><span class="time-ago">2h ago</span></div>
+              </div>
+              <div class="rpt-card">
+                <div class="rpt-icon" style="background:var(--green-light)">🌴</div>
+                <div class="rpt-info">
+                  <div class="rpt-type">Land Pollution</div>
+                  <div class="rpt-desc-row">Description ▾</div>
+                  <div class="rpt-loc">📍 Blk 2, Bgry. Sagong Siang, Caloocan</div>
+                  <div class="rpt-impact">Impact Level: Medium</div>
+                </div>
+                <div class="rpt-meta"><span class="badge resolved">Resolved</span><span class="time-ago">1d ago</span></div>
+              </div>
+              <div class="rpt-card">
+                <div class="rpt-icon" style="background:var(--orange-light)">💧</div>
+                <div class="rpt-info">
+                  <div class="rpt-type">Water Pollution</div>
+                  <div class="rpt-desc-row">Description ▾</div>
+                  <div class="rpt-loc">📍 Blk 2, Bgry. Sagong Siang, Caloocan</div>
+                  <div class="rpt-impact">Impact Level: High</div>
+                </div>
+                <div class="rpt-meta"><span class="badge pending">Pending</span><span class="time-ago">1d ago</span></div>
+              </div>
+              <div class="rpt-card">
+                <div class="rpt-icon" style="background:var(--green-light)">🌴</div>
+                <div class="rpt-info">
+                  <div class="rpt-type">Land Pollution</div>
+                  <div class="rpt-desc-row">Description ▾</div>
+                  <div class="rpt-loc">📍 Blk 2, Bgry. Sagong Siang, Caloocan</div>
+                  <div class="rpt-impact">Impact Level: Low</div>
+                </div>
+                <div class="rpt-meta"><span class="badge resolved">Resolved</span><span class="time-ago">3d ago</span></div>
+              </div>
+            </div>
+          </div>
+          <nav class="bottom-nav">
+            <button class="nav-item" onclick="showScreen('home',this,'nav')">
+              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home
+            </button>
+            <button class="nav-item active" onclick="showScreen('reports',this,'nav')">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Reports
+            </button>
+            <button class="nav-fab" onclick="showScreen('report-form')">+</button>
+            <button class="nav-item" onclick="showScreen('notifications',this,'nav')">
+              <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg>Notification
+            </button>
+            <button class="nav-item" onclick="showScreen('profile',this,'nav')">
+              <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profile
+            </button>
+          </nav>
         </div>
-        <div class="reports-body">
-          <div class="stats-month">This Month</div>
-          <div class="stats-grid">
-            <div class="stats-mini"><div class="n">8</div><div class="lbl">Total</div></div>
-            <div class="stats-mini"><div class="n">3</div><div class="lbl">Pending</div></div>
-            <div class="stats-mini"><div class="n">3</div><div class="lbl">Resolved</div></div>
-            <div class="stats-mini"><div class="n prog">1</div><div class="lbl">Progress</div></div>
-          </div>
-          <div class="recent-header">
-            <span>Recent Submissions</span>
-            <button>Sort by</button>
-          </div>
-          <div class="reports-list">
-            <div class="rpt-card">
-              <div class="rpt-icon" style="background:var(--orange-light)">💧</div>
-              <div class="rpt-info">
-                <div class="rpt-type">Water Pollution</div>
-                <div class="rpt-desc-row">Description ▾</div>
-                <div class="rpt-loc">📍 Blk 2, Bgry. Sagong Siang, Caloocan</div>
-                <div class="rpt-impact">Impact Level: Medium</div>
-              </div>
-              <div class="rpt-meta"><span class="badge pending">Pending</span><span class="time-ago">6h ago</span></div>
-            </div>
-            <div class="rpt-card">
-              <div class="rpt-icon" style="background:#dbeafe">🌴</div>
-              <div class="rpt-info">
-                <div class="rpt-type">Land Pollution</div>
-                <div class="rpt-desc-row">Description ▾</div>
-                <div class="rpt-loc">📍 Blk 2, Bgry. Sagong Siang, Caloocan</div>
-                <div class="rpt-impact">Impact Level: Medium</div>
-              </div>
-              <div class="rpt-meta"><span class="badge progress">Progress</span><span class="time-ago">2h ago</span></div>
-            </div>
-            <div class="rpt-card">
-              <div class="rpt-icon" style="background:var(--green-light)">🌴</div>
-              <div class="rpt-info">
-                <div class="rpt-type">Land Pollution</div>
-                <div class="rpt-desc-row">Description ▾</div>
-                <div class="rpt-loc">📍 Blk 2, Bgry. Sagong Siang, Caloocan</div>
-                <div class="rpt-impact">Impact Level: Medium</div>
-              </div>
-              <div class="rpt-meta"><span class="badge resolved">Resolved</span><span class="time-ago">1d ago</span></div>
-            </div>
-            <div class="rpt-card">
-              <div class="rpt-icon" style="background:var(--orange-light)">💧</div>
-              <div class="rpt-info">
-                <div class="rpt-type">Water Pollution</div>
-                <div class="rpt-desc-row">Description ▾</div>
-                <div class="rpt-loc">📍 Blk 2, Bgry. Sagong Siang, Caloocan</div>
-                <div class="rpt-impact">Impact Level: High</div>
-              </div>
-              <div class="rpt-meta"><span class="badge pending">Pending</span><span class="time-ago">1d ago</span></div>
-            </div>
-            <div class="rpt-card">
-              <div class="rpt-icon" style="background:var(--green-light)">🌴</div>
-              <div class="rpt-info">
-                <div class="rpt-type">Land Pollution</div>
-                <div class="rpt-desc-row">Description ▾</div>
-                <div class="rpt-loc">📍 Blk 2, Bgry. Sagong Siang, Caloocan</div>
-                <div class="rpt-impact">Impact Level: Low</div>
-              </div>
-              <div class="rpt-meta"><span class="badge resolved">Resolved</span><span class="time-ago">3d ago</span></div>
-            </div>
-          </div>
-        </div>
-        <nav class="bottom-nav">
-          <button class="nav-item" onclick="showScreen('home',this,'nav')">
-            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home
-          </button>
-          <button class="nav-item active" onclick="showScreen('reports',this,'nav')">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Reports
-          </button>
-          <button class="nav-fab" onclick="showScreen('report-form')">+</button>
-          <button class="nav-item" onclick="showScreen('notifications',this,'nav')">
-            <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg>Notification
-          </button>
-          <button class="nav-item" onclick="showScreen('profile',this,'nav')">
-            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profile
-          </button>
-        </nav>
-      </div>
 
-      <!-- ═══════════════════════════ REPORT FORM ════════════ -->
-      <div class="screen" id="screen-report-form">
-        <div class="form-hero">
-          <button class="back-btn" onclick="goBack()">←</button>
-          <h1>Report Pollution</h1>
-        </div>
-        <div id="form-banner" style="display:none"></div>
-        <div class="form-body">
-          <div class="form-section">
-            <div class="form-label">Type of pollution</div>
-            <div class="pill-group" id="poll-type">
-              <button class="pill" onclick="selectPill(this,'poll-type')">Water Pollution</button>
-              <button class="pill" onclick="selectPill(this,'poll-type')">Noise Pollution</button>
-              <button class="pill" onclick="selectPill(this,'poll-type')">Air Pollution</button>
-              <button class="pill" onclick="selectPill(this,'poll-type')">Light Pollution</button>
-              <button class="pill" onclick="selectPill(this,'poll-type')">Land Pollution</button>
-              <button class="pill" onclick="selectPill(this,'poll-type')">+ More</button>
+        <div class="screen" id="screen-report-form">
+          <div class="form-hero">
+            <button class="back-btn" onclick="goBack()">←</button>
+            <h1>Report Pollution</h1>
+          </div>
+          <div id="form-banner" style="display:none"></div>
+          <div class="form-body">
+            <div class="form-section">
+              <div class="form-label">Type of pollution</div>
+              <div class="pill-group" id="poll-type">
+                <button class="pill" onclick="selectPill(this,'poll-type')">Water Pollution</button>
+                <button class="pill" onclick="selectPill(this,'poll-type')">Noise Pollution</button>
+                <button class="pill" onclick="selectPill(this,'poll-type')">Air Pollution</button>
+                <button class="pill" onclick="selectPill(this,'poll-type')">Light Pollution</button>
+                <button class="pill" onclick="selectPill(this,'poll-type')">Land Pollution</button>
+                <button class="pill" onclick="selectPill(this,'poll-type')">+ More</button>
+              </div>
+            </div>
+            <div class="form-section">
+              <div class="form-label">Impact</div>
+              <div class="impact-group" id="impact-grp">
+                <button class="impact-btn" onclick="selectImpact(this)">Low</button>
+                <button class="impact-btn" onclick="selectImpact(this)">Medium</button>
+                <button class="impact-btn" onclick="selectImpact(this)">High</button>
+              </div>
+            </div>
+            <div class="form-section">
+              <div class="form-label">Location</div>
+              <input class="form-input" type="text" placeholder="Location..." id="f-loc">
+            </div>
+            <div class="form-section">
+              <div class="form-label">Description</div>
+              <textarea class="form-input" rows="4" placeholder="Describe the pollution..." id="f-desc"></textarea>
+            </div>
+            <div class="submit-area">
+              <button class="btn-submit" onclick="openModal()">Submit Report</button>
             </div>
           </div>
-          <div class="form-section">
-            <div class="form-label">Impact</div>
-            <div class="impact-group" id="impact-grp">
-              <button class="impact-btn" onclick="selectImpact(this)">Low</button>
-              <button class="impact-btn" onclick="selectImpact(this)">Medium</button>
-              <button class="impact-btn" onclick="selectImpact(this)">High</button>
-            </div>
-          </div>
-          <div class="form-section">
-            <div class="form-label">Location</div>
-            <input class="form-input" type="text" placeholder="Location..." id="f-loc">
-          </div>
-          <div class="form-section">
-            <div class="form-label">Description</div>
-            <textarea class="form-input" rows="4" placeholder="Describe the pollution..." id="f-desc"></textarea>
-          </div>
-          <div class="submit-area">
-            <button class="btn-submit" onclick="openModal()">Submit Report</button>
-          </div>
-        </div>
-        <!-- MODAL -->
-        <div class="modal-overlay hidden" id="submitModal">
-          <div class="modal-card">
-            <div class="modal-icon">❗</div>
-            <div class="modal-title">Report this problem?</div>
-            <div class="modal-sub">This will be submitted to the local authority.</div>
-            <div class="modal-btns">
-              <button class="modal-yes" onclick="confirmSubmit()">Yes</button>
-              <button class="modal-no" onclick="closeModal()">No</button>
+          <div class="modal-overlay hidden" id="submitModal">
+            <div class="modal-card">
+              <div class="modal-icon">❗</div>
+              <div class="modal-title">Report this problem?</div>
+              <div class="modal-sub">This will be submitted to the local authority.</div>
+              <div class="modal-btns">
+                <button class="modal-yes" onclick="confirmSubmit()">Yes</button>
+                <button class="modal-no" onclick="closeModal()">No</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- ══════════════════════ NOTIFICATIONS ═══════════════ -->
-      <div class="screen" id="screen-notifications">
-        <div class="notif-hero">
-          <h1>Notifications</h1>
-          <div class="filter-tabs">
-            <button class="tab-btn active" onclick="filterNotif('all',this)">All</button>
-            <button class="tab-btn" onclick="filterNotif('pending',this)">Pending</button>
-            <button class="tab-btn" onclick="filterNotif('progress',this)">Progress</button>
-            <button class="tab-btn" onclick="filterNotif('resolved',this)">Resolved</button>
+        <div class="screen" id="screen-notifications">
+          <div class="notif-hero">
+            <h1>Notifications</h1>
+            <div class="filter-tabs">
+              <button class="tab-btn active" onclick="filterNotif('all',this)">All</button>
+              <button class="tab-btn" onclick="filterNotif('pending',this)">Pending</button>
+              <button class="tab-btn" onclick="filterNotif('progress',this)">Progress</button>
+              <button class="tab-btn" onclick="filterNotif('resolved',this)">Resolved</button>
+            </div>
           </div>
+          <div class="notif-list" id="notif-list">
+            <div class="notif-item" data-status="pending">
+              <div class="notif-avatar" style="background:#7c6f5a">MS</div>
+              <div class="notif-content">
+                <div class="notif-title">Your report was received</div>
+                <div class="notif-sub">Water Pollution · Purok 3</div>
+                <div class="notif-time">2 hours ago</div>
+              </div>
+              <div class="notif-right"><span class="badge new">New</span><button class="notif-more">⋯</button></div>
+            </div>
+            <div class="notif-item" data-status="progress">
+              <div class="notif-avatar" style="background:#8b7355">BR</div>
+              <div class="notif-content">
+                <div class="notif-title">Official responded to your report</div>
+                <div class="notif-sub">Land Pollution · Purok 1</div>
+                <div class="notif-time">5 hours ago</div>
+              </div>
+              <div class="notif-right"><span class="badge new">New</span><button class="notif-more">⋯</button></div>
+            </div>
+            <div class="notif-item" data-status="all">
+              <div class="notif-avatar" style="background:#6b8e6b">CC</div>
+              <div class="notif-content">
+                <div class="notif-title">New community discussion</div>
+                <div class="notif-sub">Water Pollution · Purok 5 started a thread</div>
+                <div class="notif-time">1 day ago</div>
+              </div>
+              <div class="notif-right"><span class="badge new">New</span><button class="notif-more">⋯</button></div>
+            </div>
+            <div class="notif-item" data-status="progress">
+              <div class="notif-avatar" style="background:#5a7a6b">BG</div>
+              <div class="notif-content">
+                <div class="notif-title">Report is now in progress</div>
+                <div class="notif-sub">Air Pollution · Purok 2</div>
+                <div class="notif-time">2 days ago</div>
+              </div>
+              <div class="notif-right"><span class="badge progress">Progress</span><button class="notif-more">⋯</button></div>
+            </div>
+            <div class="notif-item" data-status="pending">
+              <div class="notif-avatar" style="background:#7a6b8e">JR</div>
+              <div class="notif-content">
+                <div class="notif-title">Report still under review</div>
+                <div class="notif-sub">Air Pollution · Purok 4</div>
+                <div class="notif-time">3 days ago</div>
+              </div>
+              <div class="notif-right"><span class="badge pending">Pending</span><button class="notif-more">⋯</button></div>
+            </div>
+            <div class="notif-item" data-status="resolved">
+              <div class="notif-avatar" style="background:#6b7a5a">AL</div>
+              <div class="notif-content">
+                <div class="notif-title">Your report has been resolved!</div>
+                <div class="notif-sub">Land Pollution · Purok 1</div>
+                <div class="notif-time">4 days ago</div>
+              </div>
+              <div class="notif-right"><span class="badge resolved">Resolved</span><button class="notif-more">⋯</button></div>
+            </div>
+          </div>
+          <nav class="bottom-nav">
+            <button class="nav-item" onclick="showScreen('home',this,'nav')">
+              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home
+            </button>
+            <button class="nav-item" onclick="showScreen('reports',this,'nav')">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Reports
+            </button>
+            <button class="nav-fab" onclick="showScreen('report-form')">+</button>
+            <button class="nav-item active" onclick="showScreen('notifications',this,'nav')">
+              <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg>Notification
+            </button>
+            <button class="nav-item" onclick="showScreen('profile',this,'nav')">
+              <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profile
+            </button>
+          </nav>
         </div>
-        <div class="notif-list" id="notif-list">
-          <div class="notif-item" data-status="new">
-            <div class="notif-avatar" style="background:#7c6f5a">MS</div>
-            <div class="notif-content">
-              <div class="notif-title">Your report was received</div>
-              <div class="notif-sub">Water Pollution · Purok 3</div>
-              <div class="notif-time">2 hours ago</div>
-            </div>
-            <div class="notif-right"><span class="badge new">New</span><button class="notif-more">⋯</button></div>
-          </div>
-          <div class="notif-item" data-status="new">
-            <div class="notif-avatar" style="background:#8b7355">BR</div>
-            <div class="notif-content">
-              <div class="notif-title">Official responded to your report</div>
-              <div class="notif-sub">Land Pollution · Purok 1</div>
-              <div class="notif-time">5 hours ago</div>
-            </div>
-            <div class="notif-right"><span class="badge new">New</span><button class="notif-more">⋯</button></div>
-          </div>
-          <div class="notif-item" data-status="new">
-            <div class="notif-avatar" style="background:#6b8e6b">CC</div>
-            <div class="notif-content">
-              <div class="notif-title">New community discussion</div>
-              <div class="notif-sub">Water Pollution · Purok 5 started a thread</div>
-              <div class="notif-time">1 day ago</div>
-            </div>
-            <div class="notif-right"><span class="badge new">New</span><button class="notif-more">⋯</button></div>
-          </div>
-          <div class="notif-item" data-status="progress">
-            <div class="notif-avatar" style="background:#5a7a6b">BG</div>
-            <div class="notif-content">
-              <div class="notif-title">Report is now in progress</div>
-              <div class="notif-sub">Air Pollution · Purok 2</div>
-              <div class="notif-time">2 days ago</div>
-            </div>
-            <div class="notif-right"><span class="badge progress">Progress</span><button class="notif-more">⋯</button></div>
-          </div>
-          <div class="notif-item" data-status="pending">
-            <div class="notif-avatar" style="background:#7a6b8e">JR</div>
-            <div class="notif-content">
-              <div class="notif-title">Report still under review</div>
-              <div class="notif-sub">Air Pollution · Purok 4</div>
-              <div class="notif-time">3 days ago</div>
-            </div>
-            <div class="notif-right"><span class="badge pending">Pending</span><button class="notif-more">⋯</button></div>
-          </div>
-          <div class="notif-item" data-status="resolved">
-            <div class="notif-avatar" style="background:#6b7a5a">AL</div>
-            <div class="notif-content">
-              <div class="notif-title">Your report has been resolved!</div>
-              <div class="notif-sub">Land Pollution · Purok 1</div>
-              <div class="notif-time">4 days ago</div>
-            </div>
-            <div class="notif-right"><span class="badge resolved">Resolved</span><button class="notif-more">⋯</button></div>
-          </div>
-        </div>
-        <nav class="bottom-nav">
-          <button class="nav-item" onclick="showScreen('home',this,'nav')">
-            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home
-          </button>
-          <button class="nav-item" onclick="showScreen('reports',this,'nav')">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Reports
-          </button>
-          <button class="nav-fab" onclick="showScreen('report-form')">+</button>
-          <button class="nav-item active" onclick="showScreen('notifications',this,'nav')">
-            <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg>Notification
-          </button>
-          <button class="nav-item" onclick="showScreen('profile',this,'nav')">
-            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profile
-          </button>
-        </nav>
-      </div>
 
-      <!-- ══════════════════════════ PROFILE ══════════════════ -->
-      <div class="screen" id="screen-profile">
-        <div style="flex-shrink:0;overflow-y:auto;flex:1;display:flex;flex-direction:column">
-          <div class="profile-hero">
-            <h2>My Profile</h2>
-            <div class="profile-avatar-wrap">
-              <div class="profile-avatar">👤</div>
-              <div class="edit-badge">Edit</div>
+        <div class="screen" id="screen-profile">
+          <div style="flex-shrink:0;overflow-y:auto;flex:1;display:flex;flex-direction:column">
+            <div class="profile-hero">
+              <h2>My Profile</h2>
+              <div class="profile-avatar-wrap">
+                <div class="profile-avatar">👤</div>
+                <div class="edit-badge">Edit</div>
+              </div>
+              <div class="profile-name">Jake Montecillo</div>
+              <div class="profile-loc">📍 Cogon, Bogo City Cebu, Purok 1</div>
+              <div class="profile-bio">Just want to help the community</div>
             </div>
-            <div class="profile-name">Jake Montecillo</div>
-            <div class="profile-loc">📍 Cogon, Bogo City Cebu, Purok 1</div>
-            <div class="profile-bio">Just want to help the community</div>
-          </div>
-          <div class="profile-stats" style="margin:0">
-            <div class="pstat"><div class="n">26</div><div class="l">Reports</div></div>
-            <div class="pstat"><div class="n">19</div><div class="l">Resolved</div></div>
-            <div class="pstat"><div class="n">7</div><div class="l">Pending</div></div>
-          </div>
-          <div class="badges-section">
-            <div style="font-size:13px;font-weight:700;color:var(--text-dark);margin-bottom:8px">Achievements</div>
-            <div class="badges-grid">
-              <div class="badge-item">🥇</div>
-              <div class="badge-item">⭐</div>
-              <div class="badge-item" style="flex-direction:column;gap:2px;font-size:16px">🌿<div style="font-size:8px;color:var(--green-dark);text-align:center">Green Advocate</div></div>
-              <div class="badge-item" style="flex-direction:column;gap:2px;font-size:16px">✏️<div style="font-size:8px;color:var(--text-muted);text-align:center">First Responder</div></div>
+            <div class="profile-stats" style="margin:0">
+              <div class="pstat"><div class="n">26</div><div class="l">Reports</div></div>
+              <div class="pstat"><div class="n">19</div><div class="l">Resolved</div></div>
+              <div class="pstat"><div class="n">7</div><div class="l">Pending</div></div>
             </div>
-          </div>
-          <div class="activity-list">
-            <div class="activity-item">
-              <div class="act-type">Land Pollution</div>
-              <div class="act-desc">Jake reported land pollution</div>
-              <div class="act-impact">Impact Level: Medium</div>
-              <div class="act-meta">
-                <span class="act-purok">Purok 1</span>
-                <span class="act-time">3 hours ago</span>
-                <span class="act-status progress">Progress</span>
+            <div class="badges-section">
+              <div style="font-size:13px;font-weight:700;color:var(--text-dark);margin-bottom:8px">Achievements</div>
+              <div class="badges-grid">
+                <div class="badge-item">🥇</div>
+                <div class="badge-item">⭐</div>
+                <div class="badge-item" style="flex-direction:column;gap:2px;font-size:16px">🌿<div style="font-size:8px;color:var(--green-dark);text-align:center">Green Advocate</div></div>
+                <div class="badge-item" style="flex-direction:column;gap:2px;font-size:16px">✏️<div style="font-size:8px;color:var(--text-muted);text-align:center">First Responder</div></div>
               </div>
             </div>
-            <div class="activity-item">
-              <div class="act-type">Air Pollution</div>
-              <div class="act-desc">Jake reported air pollution</div>
-              <div class="act-impact">Impact Level: Medium</div>
-              <div class="act-meta">
-                <span class="act-purok">Purok 1</span>
-                <span class="act-time">3 hours ago</span>
-                <span class="act-status progress">Progress</span>
+            <div class="activity-list">
+              <div class="activity-item">
+                <div class="act-type">Land Pollution</div>
+                <div class="act-desc">Jake reported land pollution</div>
+                <div class="act-impact">Impact Level: Medium</div>
+                <div class="act-meta">
+                  <span class="act-purok">Purok 1</span>
+                  <span class="act-time">3 hours ago</span>
+                  <span class="act-status progress">Progress</span>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="act-type">Air Pollution</div>
+                <div class="act-desc">Jake reported air pollution</div>
+                <div class="act-impact">Impact Level: Medium</div>
+                <div class="act-meta">
+                  <span class="act-purok">Purok 1</span>
+                  <span class="act-time">3 hours ago</span>
+                  <span class="act-status progress">Progress</span>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="act-type">Water Pollution</div>
+                <div class="act-desc">Jake reported water pollution</div>
+                <div class="act-impact">Impact Level: Medium</div>
+                <div class="act-meta">
+                  <span class="act-purok">Purok 1</span>
+                  <span class="act-time">3 hours ago</span>
+                  <span class="act-status resolved">Resolved</span>
+                </div>
               </div>
             </div>
-            <div class="activity-item">
-              <div class="act-type">Water Pollution</div>
-              <div class="act-desc">Jake reported water pollution</div>
-              <div class="act-impact">Impact Level: Medium</div>
-              <div class="act-meta">
-                <span class="act-purok">Purok 1</span>
-                <span class="act-time">3 hours ago</span>
-                <span class="act-status resolved">Resolved</span>
-              </div>
-            </div>
+            <div style="height:16px"></div>
           </div>
-          <div style="height:16px"></div>
+          <nav class="bottom-nav">
+            <button class="nav-item" onclick="showScreen('home',this,'nav')">
+              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home
+            </button>
+            <button class="nav-item" onclick="showScreen('reports',this,'nav')">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Reports
+            </button>
+            <button class="nav-fab" onclick="showScreen('report-form')">+</button>
+            <button class="nav-item" onclick="showScreen('notifications',this,'nav')">
+              <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg>Notification
+            </button>
+            <button class="nav-item active" onclick="showScreen('profile',this,'nav')">
+              <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profile
+            </button>
+          </nav>
         </div>
-        <nav class="bottom-nav">
-          <button class="nav-item" onclick="showScreen('home',this,'nav')">
-            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home
-          </button>
-          <button class="nav-item" onclick="showScreen('reports',this,'nav')">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Reports
-          </button>
-          <button class="nav-fab" onclick="showScreen('report-form')">+</button>
-          <button class="nav-item" onclick="showScreen('notifications',this,'nav')">
-            <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg>Notification
-          </button>
-          <button class="nav-item active" onclick="showScreen('profile',this,'nav')">
-            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profile
-          </button>
-        </nav>
-      </div>
-    </div><!-- /phone-shell -->
-    
-    <!-- DRAG RESIZE SENSOR BAR -->
-    <div class="resize-handle" id="resizeHandle"></div>
+      </div><div class="resize-handle" id="resizeHandle"></div>
+    </div>
   </div>
-</div>
 
-<script>
-let prevScreen = 'home';
+  <script>
+    let prevScreen = 'home';
 
-function showScreen(name, el, type) {
-  const allScreens = document.querySelectorAll('.screen');
-  const current = document.querySelector('.screen.active');
-  if(current && current.id !== 'screen-login' && current.id !== 'screen-signup') {
-    prevScreen = current.id.replace('screen-','');
-  }
-  allScreens.forEach(s => s.classList.remove('active'));
-  const target = document.getElementById('screen-' + name);
-  if(target) target.classList.add('active');
+    function showScreen(name, el, type) {
+      const allScreens = document.querySelectorAll('.screen');
+      const current = document.querySelector('.screen.active');
+      if(current && current.id !== 'screen-login' && current.id !== 'screen-signup') {
+        prevScreen = current.id.replace('screen-','');
+      }
+      allScreens.forEach(s => s.classList.remove('active'));
+      const target = document.getElementById('screen-' + name);
+      if(target) target.classList.add('active');
 
-  // sync desktop sidebar
-  document.querySelectorAll('.sidebar-nav-item').forEach(b => b.classList.remove('active'));
-  const sideMap = {home:'home',reports:'reports','report-form':'report-form',notifications:'notifications',profile:'profile'};
-  if(sideMap[name]) {
-    const sideItem = document.querySelector(`.sidebar-nav-item[onclick*="'${sideMap[name]}'"]`);
-    if(sideItem) sideItem.classList.add('active');
-  }
+      // Sync desktop sidebar
+      document.querySelectorAll('.sidebar-nav-item').forEach(b => b.classList.remove('active'));
+      const sideMap = {home:'home',reports:'reports','report-form':'report-form',notifications:'notifications',profile:'profile'};
+      if(sideMap[name]) {
+        const sideItem = document.querySelector(`.sidebar-nav-item[onclick*="'${sideMap[name]}'"]`);
+        if(sideItem) sideItem.classList.add('active');
+      }
 
-  // reset form banner
-  if(name === 'report-form') {
-    document.getElementById('form-banner').style.display = 'none';
-  }
-}
-
-function goBack() {
-  showScreen(prevScreen || 'home');
-}
-
-function doLogin() {
-  showScreen('home');
-}
-
-function togglePw(id, btn) {
-  const inp = document.getElementById(id);
-  if(inp.type === 'password') { inp.type = 'text'; btn.textContent = '🙈'; }
-  else { inp.type = 'password'; btn.textContent = '👁'; }
-}
-
-function selectPill(el, groupId) {
-  document.querySelectorAll(`#${groupId} .pill`).forEach(p => p.classList.remove('selected'));
-  el.classList.add('selected');
-}
-
-function selectImpact(el) {
-  document.querySelectorAll('#impact-grp .impact-btn').forEach(b => b.classList.remove('selected'));
-  el.classList.add('selected');
-}
-
-function openModal() {
-  document.getElementById('submitModal').classList.remove('hidden');
-}
-
-function closeModal() {
-  document.getElementById('submitModal').classList.add('hidden');
-}
-
-function confirmSubmit() {
-  closeModal();
-  const banner = document.getElementById('form-banner');
-  banner.className = 'success-banner';
-  banner.innerHTML = '✅ Report has been submitted';
-  banner.style.display = 'flex';
-  // Reset selections
-  document.querySelectorAll('.pill.selected').forEach(p => p.classList.remove('selected'));
-  document.querySelectorAll('.impact-btn.selected').forEach(b => b.classList.remove('selected'));
-  document.getElementById('f-loc').value = '';
-  document.getElementById('f-desc').value = '';
-  setTimeout(() => { showScreen('reports'); }, 1800);
-}
-
-// FIXED: Completed the broken filter function at the end of the script block
-function filterNotif(status, btn) {
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  const items = document.querySelectorAll('.notif-item');
-  items.forEach(item => {
-    if (status === 'all' || item.getAttribute('data-status') === status) {
-      item.style.display = 'flex';
-    } else {
-      item.style.display = 'none';
+      // Reset form banner
+      if(name === 'report-form') {
+        document.getElementById('form-banner').style.display = 'none';
+      }
     }
-  });
-}
-</script>
+
+    function goBack() {
+      showScreen(prevScreen || 'home');
+    }
+
+    function doLogin() {
+      showScreen('home');
+    }
+
+    function togglePw(id, btn) {
+      const inp = document.getElementById(id);
+      if(inp.type === 'password') { inp.type = 'text'; btn.textContent = '🙈'; }
+      else { inp.type = 'password'; btn.textContent = '👁'; }
+    }
+
+    function selectPill(el, groupId) {
+      document.querySelectorAll(`#${groupId} .pill`).forEach(p => p.classList.remove('selected'));
+      el.classList.add('selected');
+    }
+
+    function selectImpact(el) {
+      document.querySelectorAll('#impact-grp .impact-btn').forEach(b => b.classList.remove('selected'));
+      el.classList.add('selected');
+    }
+
+    function openModal() {
+      document.getElementById('submitModal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('submitModal').classList.add('hidden');
+    }
+
+    function confirmSubmit() {
+      closeModal();
+      const banner = document.getElementById('form-banner');
+      banner.className = 'success-banner';
+      banner.innerHTML = '✅ Report has been submitted';
+      banner.style.display = 'flex';
+      // Reset selections
+      document.querySelectorAll('.pill.selected').forEach(p => p.classList.remove('selected'));
+      document.querySelectorAll('.impact-btn.selected').forEach(b => b.classList.remove('selected'));
+      document.getElementById('f-loc').value = '';
+      document.getElementById('f-desc').value = '';
+      setTimeout(() => { showScreen('reports'); }, 1800);
+    }
+
+    // FIXED: Notification Filter Functionality
+    function filterNotif(status, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      
+      document.querySelectorAll('.notif-item').forEach(item => {
+        if (status === 'all' || item.getAttribute('data-status') === status) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    // FIXED: Live Drag-Resize Engine
+    const wrapper = document.getElementById('resizableWrapper');
+    const handle = document.getElementById('resizeHandle');
+    const pane = document.getElementById('mainPane');
+    let isResizing = false;
+
+    handle.addEventListener('mousedown', function(e) {
+      isResizing = true;
+      document.body.style.cursor = 'ew-resize';
+      document.body.style.userSelect = 'none';
+    });
+
+    document.addEventListener('mousemove', function(e) {
+      if (!isResizing) return;
+      
+      const wrapperRect = wrapper.getBoundingClientRect();
+      let newWidth = e.clientX - wrapperRect.left;
+      
+      // Keep boundaries inside native phone dimensions
+      if (newWidth < 320) newWidth = 320;
+      if (newWidth > 550) newWidth = 550;
+      
+      pane.style.width = newWidth + 'px';
+    });
+
+    document.addEventListener('mouseup', function() {
+      if (isResizing) {
+        isResizing = false;
+        document.body.style.cursor = 'default';
+        document.body.style.userSelect = 'auto';
+      }
+    });
+  </script>
 </body>
 </html>
